@@ -23,6 +23,12 @@
       "static/chunks/main-app.js",
       "static/css/app/(with-searchbar)/page.css",
       "static/chunks/app/(with-searchbar)/page.js"
+    ],
+    "/book/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/book/[id]/page.css",
+      "static/chunks/app/book/[id]/page.js"
     ]
   }
 }
