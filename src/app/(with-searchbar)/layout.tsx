@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
+import SearchBar from './searchbar';
 
 const Layout = ({
   children,
@@ -7,7 +8,7 @@ const Layout = ({
 }>) => {
   return (
     <div>
-      <div>서치바</div>
+      <SearchBar />
       {children}
     </div>
   );
