@@ -3,7 +3,7 @@ import style from './page.module.css';
 import { BookData } from '@/types';
 import { notFound } from 'next/navigation';
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
 export function generateStaticParams() {
   // 정적인 파라미터 생성
