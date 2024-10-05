@@ -1,5 +1,5 @@
 import BookItem from '@/components/book-item';
-import { API_URL } from '../page';
+import { API_URL } from '@/components/global';
 import { BookData } from '@/types';
 
 export default async function Page({

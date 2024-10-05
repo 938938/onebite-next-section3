@@ -1,11 +1,11 @@
 import './globals.css';
 import Link from 'next/link';
 import style from './layout.module.css';
-import { API_URL } from './(with-searchbar)/page';
 import { BookData } from '@/types';
+import { API_URL } from '@/components/global';
 
 async function Footer() {
-  const res = await fetch(`${API_URL}/book`);
+  const res = await fetch(`${API_URL}/book`, { cache: 'force-cache' });
   if (!res.ok) {
     return <footer>제작 @938938</footer>;
   }

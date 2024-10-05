@@ -1,4 +1,4 @@
-import { API_URL } from '@/app/(with-searchbar)/page';
+import { API_URL } from '@/components/global';
 import style from './page.module.css';
 import { BookData } from '@/types';
 
