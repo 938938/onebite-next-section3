@@ -1,6 +1,14 @@
 import { API_URL } from '@/components/global';
 import style from './page.module.css';
 import { BookData } from '@/types';
+import { notFound } from 'next/navigation';
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  // 정적인 파라미터 생성
+  return [{ id: '1' }, { id: '2' }, { id: '3' }];
+}
 
 export default async function Page({
   params,
@@ -9,6 +17,9 @@ export default async function Page({
 }) {
   const response = await fetch(`${API_URL}/book/${params.id}`);
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound();
+    }
     return <div>오류가 발생했습니다.</div>;
   }
   const books: BookData = await response.json();
