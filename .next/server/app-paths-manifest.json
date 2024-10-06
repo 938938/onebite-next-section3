@@ -1,1 +1,3 @@
-{}
+{
+  "/(with-searchbar)/page": "app/(with-searchbar)/page.js"
+}
