@@ -3,6 +3,7 @@ import style from './page.module.css';
 import { BookData } from '@/types';
 import { API_URL } from '@/components/global';
 import { Suspense } from 'react';
+import BookListSkeleton from '@/components/skeleton/book-list-skeleton';
 
 async function AllBooks() {
   const response = await fetch(`${API_URL}/book`, { cache: 'force-cache' });
@@ -45,13 +46,13 @@ export default function Home() {
     <div className={style.container}>
       <section>
         <h3>지금 추천하는 도서</h3>
-        <Suspense fallback={<div>불러오는 중입니다.</div>}>
+        <Suspense fallback={<BookListSkeleton count={3} />}>
           <RecoBooks />
         </Suspense>
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
-        <Suspense fallback={<div>불러오는 중입니다.</div>}>
+        <Suspense fallback={<BookListSkeleton count={3} />}>
           <AllBooks />
         </Suspense>
       </section>
