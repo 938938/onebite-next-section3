@@ -2,6 +2,7 @@ import BookItem from '@/components/book-item';
 import style from './page.module.css';
 import { BookData } from '@/types';
 import { API_URL } from '@/components/global';
+import { Suspense } from 'react';
 
 async function AllBooks() {
   const response = await fetch(`${API_URL}/book`, { cache: 'force-cache' });
@@ -18,6 +19,8 @@ async function AllBooks() {
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';
 
 async function RecoBooks() {
   const response = await fetch(`${API_URL}/book/random`, {
@@ -42,11 +45,15 @@ export default function Home() {
     <div className={style.container}>
       <section>
         <h3>지금 추천하는 도서</h3>
-        <RecoBooks />
+        <Suspense fallback={<div>불러오는 중입니다.</div>}>
+          <RecoBooks />
+        </Suspense>
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
-        <AllBooks />
+        <Suspense fallback={<div>불러오는 중입니다.</div>}>
+          <AllBooks />
+        </Suspense>
       </section>
     </div>
   );
