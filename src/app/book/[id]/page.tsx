@@ -10,12 +10,8 @@ export function generateStaticParams() {
   return [{ id: '1' }, { id: '2' }, { id: '3' }];
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { id: string | string[] };
-}) {
-  const response = await fetch(`${API_URL}/book/${params.id}`);
+async function BookDetail({ bookId }: { bookId: string }) {
+  const response = await fetch(`${API_URL}/book/${bookId}`);
   if (!response.ok) {
     if (response.status === 404) {
       notFound();
@@ -23,10 +19,10 @@ export default async function Page({
     return <div>오류가 발생했습니다.</div>;
   }
   const books: BookData = await response.json();
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+  const { title, subTitle, description, author, publisher, coverImgUrl } =
     books;
   return (
-    <div className={style.container}>
+    <section>
       <div
         className={style.cover_img_container}
         style={{ backgroundImage: `url('${coverImgUrl}')` }}
@@ -39,6 +35,32 @@ export default async function Page({
         {author} | {publisher}
       </div>
       <div className={style.description}>{description}</div>
+    </section>
+  );
+}
+
+function ReviewEditor() {
+  const createReviewAction = async (formData: FormData) => {
+    'use server';
+    const content = formData.get('content')?.toString();
+    const author = formData.get('author')?.toString();
+  };
+  return (
+    <section>
+      <form action={createReviewAction}>
+        <input name='content' placeholder='리뷰 내용' />
+        <input name='author' placeholder='작성자' />
+        <button type='submit'>작성하기</button>
+      </form>
+    </section>
+  );
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
+  return (
+    <div className={style.container}>
+      <BookDetail bookId={params.id} />
+      <ReviewEditor />
     </div>
   );
 }

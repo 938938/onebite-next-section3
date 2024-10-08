@@ -1,4 +1,4 @@
-import style from "./book-item-skeleton.module.css";
+import style from './book-item-skeleton.module.css';
 
 export default function BookItemSkeleton() {
   return (

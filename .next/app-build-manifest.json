@@ -1,16 +1,15 @@
 {
   "pages": {
-    "/(with-searchbar)/page": [
+    "/book/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/(with-searchbar)/page.css",
-      "static/chunks/app/(with-searchbar)/page.js"
+      "static/css/app/book/[id]/page.css",
+      "static/chunks/app/book/[id]/page.js"
     ],
-    "/(with-searchbar)/layout": [
+    "/book/[id]/error": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/(with-searchbar)/layout.css",
-      "static/chunks/app/(with-searchbar)/layout.js"
+      "static/chunks/app/book/[id]/error.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
