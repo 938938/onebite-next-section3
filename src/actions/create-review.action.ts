@@ -3,12 +3,15 @@
 import { API_URL } from '@/components/global';
 import { revalidateTag } from 'next/cache';
 
-export const createReviewAction = async (formData: FormData) => {
+export const createReviewAction = async (_: any, formData: FormData) => {
   const bookId = formData.get('bookId')?.toString();
   const content = formData.get('content')?.toString();
   const author = formData.get('author')?.toString();
   if (!content || !author) {
-    return;
+    return {
+      status: false,
+      error: '리뷰 내용과 작성자를 입력해주세요.',
+    };
   }
   try {
     const res = await fetch(`${API_URL}/review`, {
@@ -19,10 +22,18 @@ export const createReviewAction = async (formData: FormData) => {
         author,
       }),
     });
-    console.log(res.status);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
     revalidateTag(`review-${bookId}`);
+    return {
+      status: true,
+      error: '',
+    };
   } catch (err) {
-    console.error(err);
-    return;
+    return {
+      status: false,
+      error: `리뷰 저장에 실패했습니다. : ${err}`,
+    };
   }
 };
