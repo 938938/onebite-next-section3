@@ -1,7 +1,7 @@
 'use server';
 
 import { API_URL } from '@/components/global';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 
 export const createReviewAction = async (formData: FormData) => {
   const bookId = formData.get('bookId')?.toString();
@@ -20,7 +20,7 @@ export const createReviewAction = async (formData: FormData) => {
       }),
     });
     console.log(res.status);
-    revalidatePath(`/book/${bookId}`);
+    revalidateTag(`review-${bookId}`);
   } catch (err) {
     console.error(err);
     return;
