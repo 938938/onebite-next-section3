@@ -1,6 +1,7 @@
 'use server';
 
-import { API_URL } from "@/components/global";
+import { API_URL } from '@/components/global';
+import { revalidatePath } from 'next/cache';
 
 export const createReviewAction = async (formData: FormData) => {
   const bookId = formData.get('bookId')?.toString();
@@ -19,6 +20,7 @@ export const createReviewAction = async (formData: FormData) => {
       }),
     });
     console.log(res.status);
+    revalidatePath(`/book/${bookId}`);
   } catch (err) {
     console.error(err);
     return;
