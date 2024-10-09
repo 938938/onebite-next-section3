@@ -32,12 +32,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
-    ],
-    "/@modal/(.)book/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/@modal/(.)book/[id]/page.css",
-      "static/chunks/app/@modal/(.)book/[id]/page.js"
     ]
   }
 }

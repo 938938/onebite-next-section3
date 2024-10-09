@@ -1,5 +1,4 @@
 {
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/@modal/(.)book/[id]/page": "app/@modal/(.)book/[id]/page.js",
   "/(with-searchbar)/page": "app/(with-searchbar)/page.js"
 }
