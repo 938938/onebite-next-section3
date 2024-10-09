@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import ReviewItem from '@/components/review-item';
 import ReviewEditor from '@/components/review-editor';
 import Image from 'next/image';
+import { Metadata } from 'next';
 
 // export const dynamicParams = false;
 
@@ -62,6 +63,29 @@ async function ReviewList({ bookId }: { bookId: string }) {
       ))}
     </section>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata | null> {
+  const response = await fetch(`${API_URL}/book/${params.id}`, {
+    cache: 'force-cache',
+  });
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  const book: BookData = await response.json();
+  return {
+    title: `${book.title} - 한입북스`,
+    description: `${book.description}`,
+    openGraph: {
+      title: `${book.title} - 한입북스`,
+      description: `${book.description}`,
+      images: [book.coverImgUrl],
+    },
+  };
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
