@@ -7,11 +7,16 @@ import ReviewEditor from '@/components/review-editor';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
-// export const dynamicParams = false;
-
-export function generateStaticParams() {
+export async function generateStaticParams() {
   // 정적인 파라미터 생성
-  return [{ id: '1' }, { id: '2' }, { id: '3' }];
+  const res = await fetch(`${API_URL}/book`);
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+  const books: BookData[] = await res.json();
+  return books.map((book) => ({
+    id: book.id.toString(),
+  }));
 }
 
 async function BookDetail({ bookId }: { bookId: string }) {
