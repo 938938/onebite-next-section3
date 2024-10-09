@@ -1,15 +1,19 @@
 {
   "pages": {
-    "/book/[id]/page": [
+    "/parallel/@sidebar/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/book/[id]/page.css",
-      "static/chunks/app/book/[id]/page.js"
+      "static/chunks/app/parallel/@sidebar/page.js"
     ],
-    "/book/[id]/error": [
+    "/parallel/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/book/[id]/error.js"
+      "static/chunks/app/parallel/page.js"
+    ],
+    "/parallel/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/parallel/layout.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -21,28 +25,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
-    ],
-    "/(with-searchbar)/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(with-searchbar)/page.css",
-      "static/chunks/app/(with-searchbar)/page.js"
-    ],
-    "/(with-searchbar)/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(with-searchbar)/layout.css",
-      "static/chunks/app/(with-searchbar)/layout.js"
-    ],
-    "/(with-searchbar)/error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(with-searchbar)/error.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
